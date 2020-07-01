@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en">
+<![endif]-->
+
+<html lang="en">
+<head>
+
+
+    <!---basic page needs-->
+    <meta charset="utf-8">
+    <title>GroceryGo</title>
+    <!-- mobile specific metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/shopStyle.css')}}">
+
+    <!--script-->
+    <script type="text/javascript">update = {{update | safe}}</script>
+
+    <!-- favicons-->
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand" href="#" title="explore to know well about us">
+            <img
+                    class="d-inline-block"
+                    src="{{ url_for('static', filename='images/logot.jpg') }}"
+                    alt="Logo"
+                    style="width: 50px;"
+            />
+            <h1 class="d-inline-block">
+                <span class="header_1stletter">Grocerygo</span>
+            </h1></a
+        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/shop">SHOP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">CONTACT</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <section class="feature-products">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <span class="anchor" id="formUserEdit"></span>
+                    <hr class="my-5">
+                    <!-- form user info -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Update the product details </h3>
+                        </div>
+                        <div class="card-body">
+                            <form autocomplete="off" class="form" role="form" method="POST"
+                                  action="{{ url_for('.updateProduct') }}">
+                                <center>
+                                    <table width='480px' align='center'>
+                                        <tr>
+                                            <td> Product ID</td>
+                                            <td><input type="text" id="productId" name="productId" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Product Name</td>
+                                            <td><input type="text" id="productName" name="productName"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Category</td>
+                                            <td>
+                                                <input type="text" id="category" name="category"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>subCategory</td>
+                                            <td><input type="text" id="subCategory" name="subCategory"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Description</td>
+                                            <td><input type="text" id="description" name="description"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Price</td>
+                                            <td><input type="text" id="price" name="price"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Discount</td>
+                                            <td><input type="text" id="discount" name="discount"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Image path</td>
+                                            <td><input type="text" id="image" name="image"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <table>
+                                            <tr>
+                                                <td align='center'>
+                                                    <button class="btn btn-primary" type="submit" name="postAction"
+                                                            value="cancel">
+                                                        Cancel
+                                                    </button>
+                                                    <button class="btn btn-success" type="submit"
+                                                            name="postAction" value="submit">
+                                                        Submit
+                                                    </button>
+                                                    <button class="btn btn-danger" name="postAction" value="delete">
+                                                        Delete
+                                                    </button>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </table>
+                                </center>
+                            </form>
+                        </div>
+                    </div><!-- /form user info -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="{{url_for('static',filename='js/filter.js')}}"></script>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+</body>
+</html>
+
