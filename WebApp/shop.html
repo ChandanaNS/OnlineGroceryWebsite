@@ -23,6 +23,7 @@
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{url_for('static',filename='css/shopStyle.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
 
     <!--script-->
     <script type="text/javascript">data = {{data | safe}}</script>
@@ -54,29 +55,60 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/shop">SHOP</a>
+                    <a class="nav-link text-danger" href="/shop">SHOP</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">ABOUT</a>
+                    <a class="nav-link text-white" href="#contact">CONTACT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">CONTACT</a>
+                    <a class="nav-link text-white font-weight-bold" href="/logout">LOGOUT</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <!--            <form class="form-inline my-2 my-lg-0">-->
+            <!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--                <button class="btn btn-outline btn btn-warning my-2 my-sm-0" type="submit">Search</button>-->
+            <!--            </form>-->
+            <!-- Cart -->
+            <div class="row">
+                <div class="col">
+                    <div class="added__animation">
+                        <span>+1</span>
+                    </div>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#cart">
+
+                        <i class="fas fa-cart-arrow-down"></i> Cart
+                        (<span class="total-count"></span>)
+
+
+                    </button>
+                    <button class="clear-cart btn btn-danger"><i class="fas fa-trash-alt"></i> Clear Cart</button>
+                </div>
+            </div>
         </div>
     </nav>
+
     <section class="feature-products">
         <div class="container">
             <div class="row">
+                {% block content %}
+                <!--                    <div class="container">-->
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning" style="text-align:center;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% block page_content %}{% endblock %}
+                <!--                    </div>-->
+                {% endblock %}
                 <div class="col-md-12 text-center feature-title">
-                    <h2>GREAT VALUE PRODUCTS</h2>
+                    <h2 class="text-uppercase">GREAT VALUE PRODUCTS</h2>
                     <div class="categories center-listing">
                         <div class="category-listing-navigation-pills" id="category-listing-navigation-pills">
 
@@ -90,11 +122,39 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="show-cart table">
+
+                    </table>
+                    <div>Total price: $<span class="total-cart"></span></div>
+                    <div>Wallet Balance: $<span class="total-balance"></span>500</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary "><a class="text-white" href="/location"> Order now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script src="{{url_for('static',filename='js/filter.js')}}"></script>
 <script src="{{url_for('static',filename='js/main.js')}}"></script>
+<script src="{{url_for('static',filename='js/shoppingCart.js')}}"></script>
 </body>
 </html>
 

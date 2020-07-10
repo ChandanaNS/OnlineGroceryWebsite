@@ -1,15 +1,21 @@
 import os
 from datetime import timedelta
-
 from flask import Flask
 from FlaskSource.API.Products import productApi
 from FlaskSource.API.Login import loginApi
+from FlaskSource.API.User import userApi
+from FlaskSource.API.Admin import adminApi
+from FlaskSource.API.Location import locationApi
 
 app = Flask(__name__, template_folder='WebApp',
             static_folder='WebApp/static')
 
 app.register_blueprint(productApi)
 app.register_blueprint(loginApi)
+app.register_blueprint(userApi)
+app.register_blueprint(adminApi)
+app.register_blueprint(locationApi)
+
 
 # Python Flask Main Function
 if __name__ == '__main__':

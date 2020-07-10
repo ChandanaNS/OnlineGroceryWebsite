@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+
+    <!---basic page needs-->
+    <meta charset="utf-8">
+    <title>GroceryGo</title>
+    <!-- mobile specific metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+
+
+    <!--script-->
+    <script src="{{url_for('static',filename='js/modernizr.js')}}"></script>
+    <script src="{{url_for('static',filename='js/pace.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Shuffle/5.2.3/shuffle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- favicons
+   ================================================== -->
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+
+
+</head>
+
+<body class="signupLogin">
+<div class="container">
+    <div class="global-container">
+        <div class="card login-form">
+            <div class="card-body">
+                <h3 class="card-title text-center">Register to GroceryGo</h3>
+                {% block content %}
+                <!--                    <div class="container">-->
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning" style="text-align:center;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% block page_content %}{% endblock %}
+                <!--                    </div>-->
+                {% endblock %}
+                <div class="card-text">
+                    <form method="POST" action="{{ url_for('.createUser') }}">
+                        <div class="form-group">
+                            <label for="FullName">Full Name</label>
+                            <input type="text" class="form-control form-control-sm" id="FullName" name="FullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="Gender">Gender</label>
+<!--                            <input type="text" class="form-control form-control-sm" id="Gender" name="Gender">-->
+                            <select class="form-control form-control-sm" id="Gender" name="Gender">
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="DateofBirth"> Date of Birth</label>
+                            <input type="date" class="form-control form-control-sm" id="DateofBirth" name="DateofBirth">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" class="form-control form-control-sm" id="PhoneNumber" name="PhoneNumber">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" class="form-control form-control-sm" id="Email" name="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="UserName">User Name</label>
+                            <input type="text" class="form-control form-control-sm" id="UserName" name="UserName">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input type="password" class="form-control form-control-sm" id="Password"
+                                   name="Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ConfirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control form-control-sm" id="ConfirmPassword"
+                                   name="ConfirmPassword">
+                        </div>
+
+                        <button type="submit" name="postAction" value="submit" class="btn btn-info btn-block">Register
+                        </button>
+
+                        <button type="submit" class="btn btn-dark btn-block" name="postAction" value="cancel">Home
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="preloader">
+    <div id="loader"></div>
+</div>
+
+
+</body>
+</html>

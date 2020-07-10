@@ -1,0 +1,367 @@
+<style>:root{ --main-color: #f368e0; }
+
+.feature-products{
+    background-color:#F3F3F3;
+    font-family:Roboto;
+    position:relative;
+}
+
+.feature-products::before{
+    position:absolute;
+    left: 50%;
+    top:0;
+    height:50px;
+    content: "";
+    display: block;
+    width:3px;
+    background-color: #000;
+    z-index:1;
+}
+
+.product-content .title{
+    margin-top:40px;
+    text-align:center;
+    font-family:Roboto;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+
+.feature-title{
+    font-weight:600;
+    color:#000;
+}
+
+.feature-title h2{
+    margin-top:60px;
+    margin-bottom:20px;
+    font-family: Roboto;
+    font-size: 38px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.feature-title a {
+    padding: 0 20px;
+    font-size:16px;
+    color:#bbb;
+}
+
+.feature-active{
+    color:#000 !important;
+    font-weight:700;
+}
+
+.price, .rating ,.description{
+    display:inline-block;
+    margin:0 auto;
+    width:100%;
+    text-align:center;
+   /* margin-bottom:40px;*/
+}
+
+
+.product-grid{
+    border:1px solid transparent;
+    font-family: 'Roboto', sans-serif;
+    padding:10px 10px;
+    transition: all 0.5s;
+    margin-bottom:80px;
+    margin-top:40px;
+}
+
+.product-grid .product-image{
+    position: relative;
+    overflow: hidden;
+
+
+}
+.product-grid .product-image a.image{ display: block; }
+.product-grid .product-image img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    height: 150px;
+    max-height: 188px;
+    background-size: contain;
+
+}/*
+.product-grid .add-to-cart{
+    color: #fff;
+    background: #222;
+    font-size: 34px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 5px;
+    display: block;
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    transition: all ease-in-out 0.35s;
+    width:20%;
+    opacity: 0;
+
+}
+.product-grid:hover .add-to-cart{ opacity:1; }
+.product-grid .add-to-cart:after{
+    content: "\f101";
+    color: #fff;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    display: inline-block;
+    opacity: 0;
+    transition: all 0.5s;
+
+}
+.product-grid .add-to-cart:hover:after{
+    padding-left: 10px;
+    opacity: 1;
+}*/
+.product-grid .product-content{ position: relative; }
+.product-grid .product-stock{
+    color: #999;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 35px;
+    border-bottom: 1px solid #c1c1c1;
+    display: block;
+    margin: 0 0 15px;
+}
+.product-grid .icon{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    position: absolute;
+    top: -15px;
+    right: 0;
+    transition: all ease-in-out 0.35s;
+}
+.product-grid:hover .icon{
+    opacity: 1;
+    top: 8px;
+}
+.product-grid .icon li{ display: inline-block; }
+.product-grid .icon li a{
+    color: #222;
+    font-size: 16px;
+    margin: 0 4px;
+}
+.product-grid .icon li a:hover{ color: var(--main-color); }
+.product-grid .title{
+     font-family:Roboto;
+    font-size:15px;
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:2px;
+}
+.product-grid .title a{
+    color: #222;
+    transition: all 0.5s ease-out 0s;
+}
+.product-grid .title a:hover{ color: var(--main-color); }
+.product-grid .category{
+    font-size: 18px;
+    margin: 0 0 3px;
+    display: block;
+}
+.product-grid .category a{
+    color: #222;
+    transition: all 0.3s ease 0s;
+}
+.product-grid .category a:hover{ color: var(--main-color); }
+.product-grid .price{
+    font-family:Roboto;
+    font-size:14px;
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:0px;
+    display: inline-block;
+    color:#000;
+}
+.product-grid .rating{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: right;
+}
+.product-grid .rating li{
+    color: #FFB14B;
+    font-size: 13px;
+    display: inline-block;
+}
+
+
+.action-buttons{
+    display:inline-block;
+    margin-top:50px;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.action-buttons .btn-outline{
+    padding: 6px 18px;
+    border-radius:5px;
+    border: 2px solid #ccc;
+    margin: 0 4px;
+}
+
+
+.action-buttons .btn-outline-icon{
+    padding: 6px 10px;
+    border-radius:5px;
+    border: 2px solid #ccc;
+    margin: 0 4px;
+}
+
+.action-buttons a{
+    color: #000;
+    font-family:Roboto;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing:1px;
+    cursor:pointer;
+  transition: .4s;
+}
+
+.action-buttons a:hover{
+    color: #fff !important;
+    background:#000;
+
+}
+
+/*animated for add to cart button starts*/
+.added__animation {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 0;
+  bottom: 0;
+  height: 38px;
+  width: 38px;
+  display: inline-block;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: scale(0.75) translateY(0px);
+          transform: scale(0.75) translateY(0px);
+  -webkit-transition: opacity 0.2s ease, -webkit-transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+  transition: opacity 0.2s ease, -webkit-transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+  transition: opacity 0.2s ease, transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+  transition: opacity 0.2s ease, transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38), -webkit-transform 0.6s cubic-bezier(0.18, 1.22, 0.61, 1.38);
+}
+.added__animation span {
+  color: #000000;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 15px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.added__animation.clicked {
+  opacity: 1;
+  z-index:2;
+  -webkit-transform: scale(1) translateY(100px);
+          transform: scale(1) translateY(100px);
+}
+/*animated ends*/
+.product-grid .rating li.disable{ color: #c1c1c1; }
+
+/* nav pills*/
+#category-listing-navigation-pills>a.filter-pills {
+	padding: 0px 10px !important;
+	border-radius: 15px;
+	height:30px;
+	line-height: 30px;
+	display: inline-block;
+	border: 1px solid #286a72;
+	margin: 0px 2px 5px;
+    transition: transform .2s;
+    text-transform: uppercase;
+    color: #286a72;
+}
+
+.category-listing-navigation-pills>a.active {
+	color: #fff !important;
+	background-color: #15A3B8;
+}
+#category-listing-navigation-pills>a.filter-pills:hover{
+    text-decoration: none;
+    color:#15A3B8;
+    transform: scale(1.2);
+}
+
+/*Cart style starts*/
+
+.show-cart li {
+  display: flex;
+}
+/*Cart style ends*/
+
+
+/*
+admin style*/
+
+.button-wrapper .btn {
+	margin: 20px 0px;
+}
+.button-wrapper {
+	display: flex;
+    flex-flow: column wrap;
+	justify-content: space-around;
+}
+a.btn>span.glyphicon {
+	margin-left: 12px;
+}
+
+.product-grid .product-image .image{
+    position:relative;
+}
+
+.updateButton {
+  position: absolute;
+    top: 30%;
+    left: 30%;
+    border: 2px solid #000;
+    padding: 5px 20px;
+    text-align: center;
+    color: #000;
+    opacity: 0;
+    font-weight: bold;
+    transition: opacity 0.35s ease;
+}
+
+.product-grid .product-image:hover .image{
+    opacity: .5;
+}
+.product-grid .product-image:hover .updateButton{
+    opacity: 1;
+}
+.updateButton:hover{
+    color: #000;
+    text-decoration: none;
+}
+/*admin style ends
+*/
+
+@media only screen and (max-width:990px){
+    .product-grid{ margin-bottom: 30px; }
+    .product-grid .product-image img{
+
+    max-height: 300px;
+
+}
+}

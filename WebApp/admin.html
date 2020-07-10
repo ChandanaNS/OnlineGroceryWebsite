@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/shopStyle.css')}}">
 
     <!--script-->
@@ -54,16 +55,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/shop">SHOP</a>
+                    <a class="nav-link text-danger" href="/admin">SHOP</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">CONTACT</a>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-white" href="#">ABOUT</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-white" href="#">CONTACT</a>-->
+<!--                </li>-->
+                 <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">LOGOUT</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -76,11 +80,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center feature-title">
-                    <h2>Admin</h2>
-                    <button class="btn p-2" onclick="location.href='/add'" type="button"><i class="fa fa-plus" ></i> Add</button>
+                    <h2 class="text-uppercase">Admin</h2>
+                    <button class="btn p-2" onclick="location.href='/add'" type="button"><i class="fa fa-plus" ></i> Add Product</button>
 <!--                    <button class="btn p-2" onclick="location.href='/delete'" type="button"><i class="fa fa-trash" ></i> Trash</button>-->
 <!--                    <button class="btn p-2" onclick="location.href='/update'" type="button"><i class="fa fa-edit" ></i> Update</button>-->
                     <hr>
+                    {% block content %}
+                            <!--                    <div class="container">-->
+                            {% for message in get_flashed_messages() %}
+                            <div class="alert alert-warning" style="text-align:center;">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% block page_content %}{% endblock %}
+                            <!--                    </div>-->
+                            {% endblock %}
                     <div class="categories center-listing">
                         <div class="category-listing-navigation-pills" id="category-listing-navigation-pills">
 

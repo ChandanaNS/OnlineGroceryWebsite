@@ -57,13 +57,10 @@
                     <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/shop">SHOP</a>
+                    <a class="nav-link text-white" href="/admin">SHOP</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">CONTACT</a>
+                 <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">LOGOUT</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -84,13 +81,23 @@
                             <h3 class="mb-0">Update the product details </h3>
                         </div>
                         <div class="card-body">
+                            {% block content %}
+                            <!--                    <div class="container">-->
+                            {% for message in get_flashed_messages() %}
+                            <div class="alert alert-warning" style="text-align:center;">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% block page_content %}{% endblock %}
+                            <!--                    </div>-->
+                            {% endblock %}
                             <form autocomplete="off" class="form" role="form" method="POST"
                                   action="{{ url_for('.updateProduct') }}">
                                 <center>
                                     <table width='480px' align='center'>
                                         <tr>
                                             <td> Product ID</td>
-                                            <td><input type="text" id="productId" name="productId" readonly></td>
+                                            <td><input class="productId" type="text" id="productId" name="productId" ></td>
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
@@ -111,7 +118,7 @@
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td>subCategory</td>
+                                            <td>SubCategory</td>
                                             <td><input type="text" id="subCategory" name="subCategory"/></td>
                                         </tr>
                                         <tr>
@@ -125,14 +132,14 @@
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td>Price</td>
+                                            <td>Price($)</td>
                                             <td><input type="text" id="price" name="price"/></td>
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td>Discount</td>
+                                            <td>No of items</td>
                                             <td><input type="text" id="discount" name="discount"/></td>
                                         </tr>
                                         <tr>
@@ -140,7 +147,8 @@
                                         </tr>
                                         <tr>
                                             <td>Image path</td>
-                                            <td><input type="text" id="image" name="image"/></td>
+                                            <td><input type="text" id="image" name="image"/>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
@@ -148,11 +156,11 @@
                                         <table>
                                             <tr>
                                                 <td align='center'>
-                                                    <button class="btn btn-primary" type="submit" name="postAction"
+                                                    <button class="btn btn-dark" type="submit" name="postAction"
                                                             value="cancel">
                                                         Cancel
                                                     </button>
-                                                    <button class="btn btn-success" type="submit"
+                                                    <button class="btn btn-primary" type="submit"
                                                             name="postAction" value="submit">
                                                         Submit
                                                     </button>

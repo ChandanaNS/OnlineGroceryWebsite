@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en">
+<![endif]-->
+
+<html lang="en">
+<head>
+
+
+    <!---basic page needs-->
+    <meta charset="utf-8">
+    <title>GroceryGo</title>
+    <!-- mobile specific metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+    <!--script-->
+    <script type="text/javascript">data = {{data | safe}}</script>
+
+    <!-- favicons-->
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand" href="#" title="explore to know well about us">
+            <img
+                    class="d-inline-block"
+                    src="{{ url_for('static', filename='images/logot.jpg') }}"
+                    alt="Logo"
+                    style="width: 50px;"
+            />
+            <h1 class="d-inline-block">
+                <span class="header_1stletter">Grocerygo</span>
+            </h1></a
+        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+
+                {% if data['logged_in'] == "true" %}
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/shop">SHOP</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="/logout">LOGOUT</a>
+                </li>
+
+                {% elif data['superAdmin'] == "true" %}
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin">SHOP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#contact">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="/logout">LOGOUT</a>
+                </li>
+                {% else %}
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#contact">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="/login">LOGIN / SIGNUP</a>
+                </li>
+
+                {% endif %}
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <section id="header" class="jumbotron text-left text-white">
+        <div class="container p-5 ">
+            <h1 class="display-4 ">GET UPTO 60% OFF!</h1>
+            <p class="lead">Summer sale is now available with free shipping of all your products.</p>
+            <hr class="my-5">
+            <p>Patronize us today because limited products available</p>
+            <a class="btn btn-primary btn-lg " href="#" role="button ">Learn more</a>
+
+        </div>
+
+    </section>
+
+    <!--how_it_works start-->
+    <div class="w-100">
+        <div class="row text-center how_it_works_parent">
+            <div class="col-12 how_it_works"></div>
+            <div class="col-12">
+                <h1 class="display-4 how_it_works_para">
+                    How it works!
+                </h1>
+                <hr/>
+            </div>
+
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                    With your needs in mind, GroceryGo is designed to provide extreme
+                    convenience and comfort right at your doorstep, same time every day.
+                </p>
+            </div>
+
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                    Manage your expense Keep a tab on your daily expenses and also a
+                    consolidated view of spendings over the last week or month.
+                </p>
+            </div>
+
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                    Set vacation time offs Off for a vacation? Just set the vacation
+                    start and end dates and we won't deliver on those dates.
+                </p>
+            </div>
+            <div class="col-12 how_it_works_para text-justify">
+                <p class="lead">
+                    Create repeat orders Like to buy butter every week? Or ketchup only
+                    once a month? Set your orders to repeat only when you need them.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--how_it_works end-->
+
+    <!--image_with_text start-->
+    <div class="container padding image_with_text">
+        <div class="row padding">
+            <div class="col-sm-12 col-md-6 col-lg-6 text_part">
+                <br/>
+                <h2>Manage your expense</h2>
+                <p class=" m-20 p-20">
+                    Keep a tab on your daily expenses and also a consolidated view of spendings over the last week or month.
+                </p>
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+                    <a class="text-info" href="/login">Start Now</a>
+                </button>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <br/>
+                <img src="{{ url_for('static', filename='images/basket.jpg') }}" class="img-fluid"/>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <br/>
+                <img src="{{ url_for('static', filename='images/deal.jpg') }}" class="img-fluid"/>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 text_part">
+                <br/>
+                <h2>Daily deliveries</h2>
+                <p class=" m-20">
+                    We come to your doorstep every morning, early morning - so you always get the deliveries within the comfort of your home.
+                </p>
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+                    <a class="text-info" href="/login">Start Now</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--cards start-->
+    <div class="card-group">
+        <div class="card">
+            <img
+                    class="card-img-top"
+                    src="{{ url_for('static', filename='images/wallet.jpg') }}"
+                    alt="Card image cap"
+            />
+            <div class="card-body">
+                <h5 class="card-title card-title text-center text-justify font-weight-bold">
+                    Topup & Start
+                </h5>
+                <p class="card-text text-center">
+                    Just register with your basic details and top-up your GroceryGo wallet with any pre-defined amount.
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img
+                    class="card-img-top"
+                    src="{{ url_for('static', filename='images/timer.jpg') }}"
+                    alt="Card image cap"
+            />
+            <div class="card-body">
+                <h5 class="card-title card-title text-center text-justify font-weight-bold">
+                    Set Order
+                </h5>
+                <p class="card-text text-center">
+                    Create a repeat order or order anytime till midnight from a wide selection of 5000+ products for all
+                    or any of your daily needs.
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img
+                    class="card-img-top"
+                    src="{{ url_for('static', filename='images/deliver.jpg') }}"
+                    alt="Card image cap"
+            />
+            <div class="card-body">
+                <h5 class="card-title card-title text-center text-justify font-weight-bold">
+                    We deliver
+                </h5>
+                <p class="card-text text-center">
+                    Our excellent delivery team will place your order at your doorstep. Just open your door and pick it
+                    up anytime after 7:00 am
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer pt-50">
+    <div class="container  ">
+        <div class="container pb-35">
+            <div class="row  ">
+                <!-- footer about start -->
+                <div id="about" class="col-md-6 col-sm-12 col-xs-12">
+                    <h3 class="text-uppercase ">About Us</h3>
+                    <p class=" text-justify">It is an online shopping site that allows users to order groceries
+                        or other items on the schedule.<br/>
+                        <br/>
+                    <h6>Project By</h6>
+                    Chandana (10539269)</p>
+                </div>
+
+                <div id="contact" class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class=" text-uppercase ">Contact Us</h3>
+                    <span class="icon-envelope el-icon2x"> </span>
+
+                    <p class=" ">hello@grocerygo.com</p>
+                </div>
+                <!-- footer about end -->
+
+                <!-- footer social icons start -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class=" text-uppercase ">Social Media</h3>
+                    <div class="social social-two">
+                        <a href="http://twitter.com/hellogrocerygo" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="http://www.facebook.com/grocerygo" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="http://www.linkedin.com/company/grocerygo" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <!-- footer social icons end -->
+
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </div><!-- container end -->
+
+    <div class="container pt20">
+        <div class="container">
+            <div class="row">
+
+                <!-- copyright start -->
+                <div class="col-md-6 col-sm-6 col-xs-6 pull-left">
+                    <p>Copyright ©2020 <a href="/">grocerygo</a>. All rights reserved.</p>
+                </div>
+                <!-- copyright end -->
+
+                <!-- footer bottom start -->
+                <div class="col-md-6 col-sm-6 col-xs-6 pull-right">
+                    <p class=" text-right">
+                        <a href="#" class="mr20">Privacy Policy</a>
+                        <a href="#" class="mr20">Terms and Condition</a>
+                    </p>
+                </div>
+                <!-- footer bottom end -->
+
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </div><!-- container end -->
+
+    <div class="footer-bottom">
+        <div class="row">
+            <div id="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+            </div>
+        </div>
+    </div> <!--end footer-bottom -->
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>

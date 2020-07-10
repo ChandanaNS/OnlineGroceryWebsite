@@ -1,4 +1,4 @@
-from flask import render_template, session, request, redirect, Blueprint, flash, jsonify
+from flask import render_template, session, request, redirect, Blueprint, flash, jsonify, logging
 from FlaskSource.Model.ProductBrief import ProductBrief
 from Database import DBQuery
 import json
@@ -10,8 +10,12 @@ productApi = Blueprint('productApi', __name__)
 @productApi.route('/')
 def homePage():
     try:
-        print("index loaded")
-        return render_template('index.html')
+        login_dictionary = {}
+        if session.get('logged_in'):
+            login_dictionary['logged_in'] = "true"
+        elif session.get('superAdmin'):
+            login_dictionary["superAdmin"] = "true"
+        return render_template('index.html', data=login_dictionary)
     except:
         flash('Something went wrong')
         return redirect("/")
@@ -23,6 +27,7 @@ def shop():
         login_dictionary = {}
         data = DBQuery.getAllProducts()
         product_list = []
+        print("Shop products")
         if session.get('logged_in'):
             login_dictionary['logged_in'] = "true"
         elif session.get('superAdmin'):
@@ -35,20 +40,21 @@ def shop():
             jsonData = json.dumps(productBrief.__dict__)
             product_list.append(json.loads(jsonData))
         login_dictionary['productList'] = json.dumps(product_list)
-        return render_template('admin.html', data=login_dictionary)
+        print(login_dictionary)
+        return render_template('shop.html', data=login_dictionary)
     except:
         flash('Something went wrong')
         return redirect("/")
 
 
-# Python Flask API for adding an product
+# Python Flask API for adding a product
 @productApi.route('/add', methods=['GET', 'POST'])
 def addProduct():
     try:
         if request.method == "POST":
             postAction = request.form["postAction"]
             if postAction == 'cancel':
-                return redirect("/shop")
+                return redirect("/admin")
             ProductName = request.form["ProductName"]
             Category = request.form["Category"]
             SubCategory = request.form["SubCategory"]
@@ -56,17 +62,21 @@ def addProduct():
             Image = request.form["Image"]
             Price = request.form["Price"]
             Discount = request.form["Discount"]
-            DBQuery.addProduct('products', ProductName.title(), Category.title(), SubCategory.title(),
-                               Description.title(), Image.title(), Price.title(), Discount.title())
-            flash("product Added Successfully")
-            return redirect("/shop")
+            if ProductName and Category and SubCategory and Price and Discount:
+                DBQuery.addProduct('products', ProductName.title(), Category.title(), SubCategory.title(),
+                                   Description.title(), Image, Price.title(), Discount.title())
+                flash("product Added Successfully")
+                return redirect("/admin")
+            else:
+                flash('Please fill in all the details')
+                return redirect("/add")
         return render_template('add.html')
     except:
         flash('Something went wrong')
         return redirect("/")
 
 
-# Python Flask API for adding an product
+# Python Flask API for updating a product
 @productApi.route('/update', methods=['GET', 'POST'])
 def updateProduct():
     try:
@@ -82,7 +92,7 @@ def updateProduct():
             if request.method == "POST":
                 postAction = request.form["postAction"]
                 if postAction == 'cancel':
-                    return redirect("/shop")
+                    return redirect("/admin")
                 if postAction == 'delete':
                     return deleteproduct()
                 productId = int(request.form["productId"])
@@ -93,12 +103,14 @@ def updateProduct():
                 image = request.form["image"]
                 price = request.form["price"]
                 discount = request.form["discount"]
-                DBQuery.updateProduct(productId, productName, category, subCategory, description, image, price,
-                                      discount)
-                flash("product Updated Successfully")
-                print("update")
-                return redirect("/shop")
-
+                if productName and category and subCategory and price and discount:
+                    DBQuery.updateProduct(productId, productName, category, subCategory, description, image, price,
+                                          discount)
+                    flash("product Updated Successfully")
+                    return redirect("/admin")
+                else:
+                    flash('Please fill in all the details')
+                    return redirect("/update")
         jsonData = json.dumps(product)
         return render_template('update.html', update=json.loads(jsonData))
     except:
@@ -113,7 +125,7 @@ def deleteproduct():
         productId = request.form["productId"]
         DBQuery.deleteProductUsingId(productId)
         flash("Product Deleted Successfully")
-        return redirect("/")
+        return redirect("/admin")
     except:
         flash('Something went wrong')
         return redirect("/")
