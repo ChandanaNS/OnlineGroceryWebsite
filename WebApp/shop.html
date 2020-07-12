@@ -81,7 +81,7 @@
                     <div class="added__animation">
                         <span>+1</span>
                     </div>
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#cart">
+                    <button type="button " class="btn btn-light cart" data-toggle="modal" data-target="#cart">
 
                         <i class="fas fa-cart-arrow-down"></i> Cart
                         (<span class="total-count"></span>)
@@ -139,11 +139,20 @@
 
                     </table>
                     <div>Total price: $<span class="total-cart"></span></div>
-                    <div>Wallet Balance: $<span class="total-balance"></span>500</div>
+                    <div>Wallet Balance: $<span class="total-balance">
+                        {% if data['user'] %}
+                              {{data['user']|last}}
+                        {% else %}
+                             0
+                        {% endif %}
+                    </span>
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary "><a class="text-white" href="/location"> Order now</a></button>
+                    <button type="submit" class="btn btn-primary order"><a class="text-white ordera" href="/location"> Order now</a>
+                    </button>
                 </div>
             </div>
         </div>

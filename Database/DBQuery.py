@@ -26,7 +26,7 @@ def addProduct(tableName, ProductName, Category, SubCategory,
 def getProductUsingId(productID):
     db_connection = DBConnection.connection()
     cur = db_connection.cursor()
-    cur.execute("SELECT * FROM products where ProductID=" + productID)
+    cur.execute("SELECT * FROM products where ProductID=" + str(productID))
     data = cur.fetchone()
     db_connection.commit()
     cur.close()
@@ -53,7 +53,7 @@ def updateProduct(productId, productName, category, subCategory, description, im
     cur.close()
 
 
-#update password using userName
+# update password using userName
 def updatePassword(userName, newPassword):
     db_connection = DBConnection.connection()
     cur = db_connection.cursor()
@@ -63,6 +63,7 @@ def updatePassword(userName, newPassword):
         (newPassword, userName))
     db_connection.commit()
     cur.close()
+
 
 def getAllUser():
     db_connection = DBConnection.connection()
@@ -76,13 +77,12 @@ def getAllUser():
 
 
 # Create User in Database
-def createUser(name, userName, password, email, gender, dob, phoneNumber):
+def createUser(name, userName, password, email, gender, dob, phoneNumber, walletBalance):
     db_connection = DBConnection.connection()
     cur = db_connection.cursor()
-    print(dob)
     cur.execute(
-        "INSERT INTO users (FullName,UserName, Password,Email,Gender,DateOfBirth,PhoneNumber) VALUES (%s,%s,%s,%s,%s,%s,%s)",
-        (name, userName, password, email, gender, dob, phoneNumber))
+        "INSERT INTO users (FullName,UserName, Password,Email,Gender,DateOfBirth,PhoneNumber, Wallet) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",
+        (name, userName, password, email, gender, dob, phoneNumber, walletBalance))
     db_connection.commit()
     cur.close()
 
@@ -97,3 +97,23 @@ def getUserByUserName(userName):
     db_connection.commit()
     cur.close()
     return data
+
+
+# update ordered products
+def updateOrders(product_list, userName):
+    db_connection = DBConnection.connection()
+    cur = db_connection.cursor()
+    cur.execute(
+        "update users set OrderedProducts='{0}' where UserName='{1}'".format(product_list, userName))
+    db_connection.commit()
+    cur.close()
+
+
+# update wallet balance
+def walletBalance(wallet, userName):
+    db_connection = DBConnection.connection()
+    cur = db_connection.cursor()
+    cur.execute(
+        "UPDATE users SET Wallet=%s where userName=%s", (wallet, userName))
+    db_connection.commit()
+    cur.close()

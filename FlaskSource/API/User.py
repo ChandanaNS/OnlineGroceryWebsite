@@ -1,7 +1,7 @@
 import binascii
 import hashlib
 import os
-from flask import render_template, request, flash, redirect, Blueprint
+from flask import render_template, request, flash, redirect, Blueprint, session
 from Database import DBQuery
 from FlaskSource.Model.UserDetails import UserDetails
 
@@ -22,8 +22,7 @@ def createUser():
             email = request.form['Email']
             for userData in user_data:
                 userDetails = UserDetails(userData[0], userData[1], userData[2], userData[3], userData[4], userData[5],
-                                          userData[6],
-                                          userData[7])
+                                          userData[6], userData[7], userData[8], userData[9])
                 if userName == userDetails.getUserName():
                     flash('User Name Already Taken, Please try with a different user name')
                     return redirect("/create")
@@ -33,10 +32,12 @@ def createUser():
             phoneNumber = request.form['PhoneNumber']
             password = request.form['Password']
             confirmPassword = request.form['ConfirmPassword']
+            walletBalance = 50
             if name and userName and password and email:
                 if password == confirmPassword:
-                    DBQuery.createUser(name.capitalize(), userName, hash_password(password), email, gender, date_of_birth,
-                                       phoneNumber)
+                    DBQuery.createUser(name.capitalize(), userName, hash_password(password), email, gender,
+                                       date_of_birth,
+                                       phoneNumber, walletBalance)
                     flash('User Account Created Successfully')
                     return redirect("/login")
                 else:
@@ -57,4 +58,3 @@ def hash_password(password):
                                        salt, 100000)
     hashPassword = binascii.hexlify(hashPassword)
     return (salt + hashPassword).decode('ascii')
-

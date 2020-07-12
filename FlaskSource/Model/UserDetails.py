@@ -1,5 +1,5 @@
 class UserDetails:
-    def __init__(self, loginId, name, userName, password, email, gender, dateOfBirth, phoneNumber):
+    def __init__(self, loginId, name, userName, password, email, gender, dateOfBirth, phoneNumber, walletBalance, orderedProducts):
         self.loginId = loginId
         self.name = name
         self.userName = userName
@@ -8,7 +8,8 @@ class UserDetails:
         self.gender = gender
         self.dateOfBirth = dateOfBirth
         self.phoneNumber = phoneNumber
-        # self.orderedProducts = orderedProducts
+        self.walletBalance = walletBalance
+        self.orderedProducts = orderedProducts
 
     def getName(self):
         return self.name
@@ -33,6 +34,12 @@ class UserDetails:
 
     def getPhoneNumber(self):
         return self.phoneNumber
-    #
-    # def getorderedProducts(self):
-    #     return self.orderedProducts
+
+    def getWalletBalance(self):
+        return self.walletBalance
+
+    def getOrderedProducts(self):
+        return self.orderedProducts
+
+    def setOrderedProducts(self, x):
+        self.orderedProducts = x

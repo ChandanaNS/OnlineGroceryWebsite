@@ -23,20 +23,21 @@ def loginPage():
                 return redirect("/")
             userDetailsFromDB = DBQuery.getUserByUserName(userName)
 
-            print(userDetailsFromDB)
             if userDetailsFromDB:
                 # Based on Database Details, Passing it in UserDetails Class
                 userDetails = UserDetails(userDetailsFromDB[0], userDetailsFromDB[1], userDetailsFromDB[2],
                                           userDetailsFromDB[3], userDetailsFromDB[4], userDetailsFromDB[5],
-                                          userDetailsFromDB[6], userDetailsFromDB[7])
+                                          userDetailsFromDB[6], userDetailsFromDB[7], userDetailsFromDB[8],
+                                          userDetailsFromDB[9])
                 if verify_password(userDetails.getPassword(), password):
                     if userName == 'admin' and password == 'admin':
-                        print("super admin logged in")
                         session['superAdmin'] = True
                     else:
-                        print("User Logged in")
                         session['logged_in'] = True
                     session['userName'] = userName
+                    session['user'] = [userDetails.getName(), userDetails.getUserName(), userDetails.getEmail(),
+                                       userDetails.getGender(), userDetails.getDateOfBirth(),
+                                       userDetails.getPhoneNumber(), userDetails.getWalletBalance()]
                     return redirect("/")
                 else:
                     flash('Please enter a valid password')
@@ -99,5 +100,4 @@ def verify_password(stored_password, database_password):
                                        salt.encode('ascii'),
                                        100000)
     hashPassword = binascii.hexlify(hashPassword).decode('ascii')
-    print(hashPassword,stored_password)
     return hashPassword == stored_password

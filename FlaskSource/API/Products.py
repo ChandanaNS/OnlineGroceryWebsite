@@ -5,7 +5,6 @@ import json
 
 productApi = Blueprint('productApi', __name__)
 
-
 # Python Flask API for home page
 @productApi.route('/')
 def homePage():
@@ -27,11 +26,12 @@ def shop():
         login_dictionary = {}
         data = DBQuery.getAllProducts()
         product_list = []
-        print("Shop products")
         if session.get('logged_in'):
             login_dictionary['logged_in'] = "true"
         elif session.get('superAdmin'):
             login_dictionary["superAdmin"] = "true"
+        login_dictionary['user'] = session['user']
+
         # Fetch All the products from Database
         for productFromDB in data:
             productBrief = ProductBrief(productFromDB[0], productFromDB[1], productFromDB[2], productFromDB[3],
@@ -40,7 +40,6 @@ def shop():
             jsonData = json.dumps(productBrief.__dict__)
             product_list.append(json.loads(jsonData))
         login_dictionary['productList'] = json.dumps(product_list)
-        print(login_dictionary)
         return render_template('shop.html', data=login_dictionary)
     except:
         flash('Something went wrong')

@@ -27,7 +27,7 @@ class ProductBrief:
     def getImage(self):
         return self.image
 
-    def getprice(self):
+    def getPrice(self):
         return self.price
 
     def getDiscount(self):

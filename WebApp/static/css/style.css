@@ -1,131 +1,149 @@
 #header {
-  background: url("https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80")center
-    center/cover no-repeat;
-
-}
-#header > *{
-    color:#000;
-}
-.company-name{
-    font-family: cursive;
+	background: url("https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80")center center/cover no-repeat;
 }
 
-#icon{
-  font-size:25px;
-  border-radius:50%;
-  background-color:#f4f4f4;
-  padding:15px;
-}
-.nav-item:hover .nav-link{
-    color: #A71E2A !important;
-}
-.shop{
-  margin-top:50px;
-  margin-bottom:50px;
-  margin-left:120px;
-  font-size:50px;
-}
-#content{
-  color:#000;
-  padding:35px;
-}
-#text{
-  text-align:center;
-  font-size:45px;
-  margin-left:45%;
-}
-#footer{
-  margin-top:35px;
-  margin-bottom:35px;
-  background-color:#dbdde0;
+#header>* {
+	color: #000;
 }
 
-
-
-.footer{
-  background-color:#222;
-  color:#fff;
-  font-size:14px;
-  padding-top:16px;
-  width:100%;
+.company-name {
+	font-family: cursive;
 }
-#iconn{
-  color:blue;
-  font-size:25px;
+
+#icon {
+	font-size: 25px;
+	border-radius: 50%;
+	background-color: #f4f4f4;
+	padding: 15px;
+}
+
+.nav-item:hover .nav-link {
+	color: #A71E2A !important;
+}
+
+.shop {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 120px;
+	font-size: 50px;
+}
+
+#content {
+	color: #000;
+	padding: 35px;
+}
+
+#text {
+	text-align: center;
+	font-size: 45px;
+	margin-left: 45%;
+}
+
+#footer {
+	margin-top: 35px;
+	margin-bottom: 35px;
+	background-color: #dbdde0;
+}
+
+.footer {
+	background-color: #222;
+	color: #fff;
+	font-size: 14px;
+	padding-top: 16px;
+	width: 100%;
+}
+
+#iconn {
+	color: blue;
+	font-size: 25px;
 }
 
 .how_it_works_parent {
-  background-image: url(../images/vegrack.jpg);
-  background-attachment: fixed;
-  font-weight: bold;
-  background-position: center;
-  background-size: cover;
-  padding: 30px;
+	background-image: url(../images/vegrack.jpg);
+	background-attachment: fixed;
+	font-weight: bold;
+	background-position: center;
+	background-size: cover;
+	padding: 30px;
 }
-.how_it_works_para{
-    background-color: #F9F9F9;
+
+.how_it_works_para {
+	background-color: #F9F9F9;
 }
+
 
 /*login form*/
 
-.global-container{
-	min-height:100vh;
+.global-container {
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: #f5f5f5;
 }
 
-form{
+form {
 	padding-top: 10px;
 	font-size: 14px;
 	margin-top: 30px;
 }
 
-.card-title{ font-weight:300; }
-.card-img-top{
-    max-height:200px;
-    background-size: contain;
+.card-title {
+	font-weight: 300;
 }
 
-.btn{
+.card-img-top {
+	max-height: 200px;
+	background-size: contain;
+}
+
+.btn {
 	font-size: 14px;
 	/*margin-top:20px;*/
 }
 
-
-.login-form{
-	width:330px;
-	margin:20px;
+.login-form {
+	width: 330px;
+	margin: 20px;
 }
 
-.sign-up{
-	text-align:center;
-	padding:20px 0 0;
+.sign-up {
+	text-align: center;
+	padding: 20px 0 0;
 }
 
-.alert{
-	margin-bottom:-30px;
+.alert {
+	margin-bottom: -30px;
 	font-size: 13px;
-	margin-top:20px;
+	margin-top: 20px;
 }
 
-#mapContainer{
-    width: 25vw;
-    height:28vh;
+#mapContainer {
+	width: 25vw;
+	height: 28vh;
 }
 
-.displayNone{
-    display: none !important;
+.displayNone {
+	display: none !important;
 }
 
-@media(max-width:600px){
-    h1{
-        font-size:25px;
-        font-weight:100;
-    }
-    #mapContainer{
-    width: 73vw;
-    height:28vh;
+.isDisabled {
+	cursor: not-allowed !important;
+	opacity: 0.5;
+	pointer-events: none;
 }
+
+.tableClass {
+	margin: 50px 40px;
+}
+
+@media(max-width:600px) {
+	h1 {
+		font-size: 25px;
+		font-weight: 100;
+	}
+	#mapContainer {
+		width: 73vw;
+		height: 28vh;
+	}
 }

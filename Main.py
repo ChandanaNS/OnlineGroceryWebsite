@@ -7,6 +7,8 @@ from FlaskSource.API.User import userApi
 from FlaskSource.API.Admin import adminApi
 from FlaskSource.API.Location import locationApi
 
+
+
 app = Flask(__name__, template_folder='WebApp',
             static_folder='WebApp/static')
 
