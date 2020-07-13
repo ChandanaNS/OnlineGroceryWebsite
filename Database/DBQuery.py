@@ -57,7 +57,6 @@ def updateProduct(productId, productName, category, subCategory, description, im
 def updatePassword(userName, newPassword):
     db_connection = DBConnection.connection()
     cur = db_connection.cursor()
-    print(userName, newPassword)
     cur.execute(
         "UPDATE users SET Password=%s where userName=%s",
         (newPassword, userName))
@@ -65,6 +64,7 @@ def updatePassword(userName, newPassword):
     cur.close()
 
 
+# Fetch all users
 def getAllUser():
     db_connection = DBConnection.connection()
     cur = db_connection.cursor()

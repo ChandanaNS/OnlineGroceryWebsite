@@ -25,7 +25,7 @@ def adminLogs():
                 userDetails = UserDetails(userData[0], userData[1], userData[2], userData[3], userData[4], userData[5],
                                           date.isoformat(userData[6]),
                                           userData[7], userData[8], userData[9])
-                if userDetails.getUserName() is not "admin":
+                if userDetails.getUserName() != "admin":
                     if userDetails.getOrderedProducts() is None:
                         userDetails.setOrderedProducts([])
                         jsonUserDump = json.dumps(userDetails.__dict__)
@@ -60,7 +60,7 @@ def adminLogs():
         login_dictionary['orderList'] = order_list
         login_dictionary['productList'] = json.dumps(product_list)
         return render_template('admin.html', data=login_dictionary)
-
-    except:
+    except Exception as e:
+        print('Exception:: Admin API::', e)
         flash('Something went wrong')
         return redirect("/")
