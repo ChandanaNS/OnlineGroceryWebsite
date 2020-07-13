@@ -1,8 +1,10 @@
--- CREATE DATABASE GroceryGo;
+
+-- Create Database 
+CREATE DATABASE GroceryGo;
+
 USE GroceryGo;
 
 -- User table
-SELECT * FROM users;
 CREATE TABLE IF NOT EXISTS users (
     UserID INT(11) AUTO_INCREMENT PRIMARY KEY,
     FullName VARCHAR(255),
@@ -41,15 +43,14 @@ CREATE TABLE IF NOT EXISTS products (
 --     FOREIGN KEY (ProductID) REFERENCES products(ProductID)
 -- )  ENGINE=INNODB;
 
-DELETE FROM products;
+-- DELETE script test
 DELETE FROM products WHERE ProductID=1;
+-- delete from users;
+-- select * from users;
 
-delete from users;
-select * from users;
-
-set foreign_key_checks=0;
-truncate table users;
-set foreign_key_checks=1;
+-- set foreign_key_checks=0;
+-- truncate table users;
+-- set foreign_key_checks=1;
 
 SELECT * FROM products;
 INSERT INTO products VALUES (1,'Nestle','Dairy','Milk','500Ml','',1.5,0);
@@ -84,7 +85,7 @@ ADD COLUMN OrderedProducts longtext;
 -- ALTER TABLE orders
 -- ADD COLUMN ProductId Int(11),ADD COLUMN NumberOfItems Int(11) ;
 
-Select * from users;
+-- Select * from users;
 
-SELECT * FROM products where ProductID=1
+-- SELECT * FROM products where ProductID=1
 -- UPDATE users SET Wallet = '50' ;
