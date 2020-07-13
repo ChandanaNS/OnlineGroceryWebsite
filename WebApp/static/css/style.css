@@ -53,11 +53,6 @@
 	width: 100%;
 }
 
-#iconn {
-	color: blue;
-	font-size: 25px;
-}
-
 .how_it_works_parent {
 	background-image: url(../images/vegrack.jpg);
 	background-attachment: fixed;
@@ -118,9 +113,9 @@ form {
 	margin-top: 20px;
 }
 
-#mapContainer {
-	width: 25vw;
-	height: 28vh;
+#mapContainer, canvas {
+	width: 25vw !important;
+	height: 28vh !important;
 }
 
 .displayNone {
@@ -137,13 +132,14 @@ form {
 	margin: 50px 40px;
 }
 
+
 @media(max-width:600px) {
 	h1 {
 		font-size: 25px;
 		font-weight: 100;
 	}
-	#mapContainer {
-		width: 73vw;
-		height: 28vh;
+	#mapContainer, canvas {
+		width: 73vw !important;
+		height: 28vh !important;
 	}
 }
