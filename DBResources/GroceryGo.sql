@@ -12,8 +12,10 @@ CREATE TABLE IF NOT EXISTS users (
     Password LONGTEXT ,
     Email VARCHAR(50),
     Gender varchar(50) ,
-	DateofBirth DATE,
-	PhoneNumber varchar(50)
+    DateofBirth DATE,
+    PhoneNumber varchar(50),
+    Wallet VARCHAR(20),
+    OrderedProducts longtext
 )  ENGINE=INNODB;
 
 -- Products table
@@ -32,6 +34,7 @@ CREATE TABLE IF NOT EXISTS products (
 -- DELETE script test
 DELETE FROM products WHERE ProductID=1;
 
+-- Insert products
 INSERT INTO products VALUES (1,'Nestle','Dairy','Milk','500Ml','',1.5,0);
 INSERT INTO products VALUES (2,'Lidl','Dairy','Milk','500Ml','',1.5,0);
 INSERT INTO products VALUES (3,'Banana','Fresh','Fruits','5 Pieces','https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',1.29,0);
@@ -43,12 +46,4 @@ INSERT INTO products VALUES (8,'Banana','Fresh','Fruits','5 Pieces','https://ima
 INSERT INTO products VALUES (9,'Banana','Fresh','Fruits','10 Pieces','https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',1.29,0);
 INSERT INTO products VALUES (10,'Aldi','Dairy','Milk','500Ml','https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',2,0);
 
-
- -- added wallet column
-ALTER TABLE users
-ADD COLUMN Wallet VARCHAR(20) ;
-
- -- added ordered products column
-ALTER TABLE users
-ADD COLUMN OrderedProducts longtext;
 
