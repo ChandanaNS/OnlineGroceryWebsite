@@ -1,6 +1,6 @@
 import binascii
 import hashlib
-from flask import render_template, request, flash, redirect, session, Blueprint, logging
+from flask import render_template, request, flash, redirect, session, Blueprint
 from Database import DBQuery
 from FlaskSource.Model.UserDetails import UserDetails
 from FlaskSource.API.User import hash_password
@@ -92,6 +92,7 @@ def forgotPassword():
         return redirect("/")
 
 
+# Python Flask verify password method
 def verify_password(stored_password, database_password):
     salt = stored_password[:64]
     stored_password = stored_password[64:]

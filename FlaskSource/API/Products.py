@@ -1,4 +1,4 @@
-from flask import render_template, session, request, redirect, Blueprint, flash, jsonify, logging
+from flask import render_template, session, request, redirect, Blueprint, flash
 from FlaskSource.Model.ProductBrief import ProductBrief
 from Database import DBQuery
 import json
@@ -20,6 +20,7 @@ def homePage():
         return redirect("/")
 
 
+# Python Flask API for items page
 @productApi.route('/shop')
 def shop():
     try:
@@ -31,7 +32,6 @@ def shop():
         elif session.get('superAdmin'):
             login_dictionary["superAdmin"] = "true"
         login_dictionary['user'] = session['user']
-
         # Fetch All the products from Database
         for productFromDB in data:
             productBrief = ProductBrief(productFromDB[0], productFromDB[1], productFromDB[2], productFromDB[3],
@@ -64,7 +64,7 @@ def addProduct():
             if ProductName and Category and SubCategory and Price and Discount:
                 DBQuery.addProduct('products', ProductName.title(), Category.title(), SubCategory.title(),
                                    Description.title(), Image, Price.title(), Discount.title())
-                flash("product Added Successfully")
+                flash("Product Added Successfully")
                 return redirect("/admin")
             else:
                 flash('Please fill in all the details')
