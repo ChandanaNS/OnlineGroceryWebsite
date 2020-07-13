@@ -11,7 +11,6 @@ $(document).ready(function () {
 	//  update function
 	if (typeof update != "undefined" && update != null) {
 		const productToUpdate = update[0];
-		console.log(productToUpdate);
 		$('#productId').val(productToUpdate["id"]);
 		$('#productName').val(productToUpdate["productName"]);
 		$('#category').val(productToUpdate["category"]);
@@ -26,9 +25,10 @@ $(document).ready(function () {
 		$(this).toggleClass('text-danger');
 	});
 
+    //flash message for 4s
 	setTimeout(function () {
 		$('.alert-warning').remove();
-	}, 3000);
+	}, 4000);
 
 
 	//category filter
@@ -136,6 +136,8 @@ $(document).ready(function () {
 
 
 	viewProducts(dataVar);
+
+
 	//render template for users
 	function viewUsers(userData) {
 
@@ -190,21 +192,17 @@ $(document).ready(function () {
 		$("#products").html(tableString);
 	}
 
-
+    //fetch user details
 	$("body").on("click", ".user-statistic", function (event) {
-		console.log('admin-shop');
-
-		//        $(this).toggleClass('text-danger');
 		event.preventDefault();
 		$('nav').find('.text-danger').removeClass('text-danger');
 		$(this).addClass('text-danger');
 		$('body').find('.feature-title').addClass('d-none');
 		viewUsers(userData);
 	});
-	$("body").on("click", ".order-statistic", function (event) {
 
-		//        $(this).toggleClass('text-danger');
-		//       console.log('order-statistic');
+	//fetch order details
+	$("body").on("click", ".order-statistic", function (event) {
 		event.preventDefault();
 		$('nav').find('.text-danger').removeClass('text-danger');
 		$(this).addClass('text-danger');
