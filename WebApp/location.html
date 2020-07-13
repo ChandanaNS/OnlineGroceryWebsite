@@ -48,14 +48,12 @@
                 <h3 class="card-title text-center newAddress">Add a new address</h3>
                 <h3 class="card-title text-center placeOrder displayNone">Place order</h3>
                 {% block content %}
-                <!--                    <div class="container">-->
                 {% for message in get_flashed_messages() %}
                 <div class="alert alert-warning" style="text-align:center;">
                     {{ message }}
                 </div>
                 {% endfor %}
                 {% block page_content %}{% endblock %}
-                <!--                    </div>-->
                 {% endblock %}
                 <div class="card-text">
 
@@ -107,10 +105,6 @@
 
 </div>
 
-<div id="preloader">
-    <div id="loader"></div>
-</div>
-<!-- /form -->
 
 <!--Java Script-->
 

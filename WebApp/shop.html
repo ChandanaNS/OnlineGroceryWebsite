@@ -71,11 +71,6 @@
                     <a class="nav-link text-white font-weight-bold" href="/logout">LOGOUT</a>
                 </li>
             </ul>
-            <!--            <form class="form-inline my-2 my-lg-0">-->
-            <!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--                <button class="btn btn-outline btn btn-warning my-2 my-sm-0" type="submit">Search</button>-->
-            <!--            </form>-->
-            <!-- Cart -->
             <div class="row">
                 <div class="col">
                     <div class="added__animation">
@@ -98,14 +93,12 @@
         <div class="container">
             <div class="row">
                 {% block content %}
-                <!--                    <div class="container">-->
                 {% for message in get_flashed_messages() %}
                 <div class="alert alert-warning" style="text-align:center;">
                     {{ message }}
                 </div>
                 {% endfor %}
                 {% block page_content %}{% endblock %}
-                <!--                    </div>-->
                 {% endblock %}
                 <div class="col-md-12 text-center feature-title">
                     <h2 class="text-uppercase">GREAT VALUE PRODUCTS</h2>
@@ -161,7 +154,6 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="{{url_for('static',filename='js/filter.js')}}"></script>
 <script src="{{url_for('static',filename='js/main.js')}}"></script>
 <script src="{{url_for('static',filename='js/shoppingCart.js')}}"></script>
 </body>

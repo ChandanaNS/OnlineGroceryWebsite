@@ -1,7 +1,7 @@
 import binascii
 import hashlib
 import os
-from flask import render_template, request, flash, redirect, Blueprint, session
+from flask import render_template, request, flash, redirect, Blueprint
 from Database import DBQuery
 from FlaskSource.Model.UserDetails import UserDetails
 
@@ -52,6 +52,7 @@ def createUser():
         return redirect("/")
 
 
+# Python Flask hash password method
 def hash_password(password):
     salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
     hashPassword = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'),

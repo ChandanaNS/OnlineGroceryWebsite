@@ -82,14 +82,12 @@
                         </div>
                         <div class="card-body">
                             {% block content %}
-                            <!--                    <div class="container">-->
                             {% for message in get_flashed_messages() %}
                             <div class="alert alert-warning" style="text-align:center;">
                                 {{ message }}
                             </div>
                             {% endfor %}
                             {% block page_content %}{% endblock %}
-                            <!--                    </div>-->
                             {% endblock %}
                             <form autocomplete="off" class="form" role="form" method="POST"
                                   action="{{ url_for('.updateProduct') }}">
@@ -184,7 +182,6 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="{{url_for('static',filename='js/filter.js')}}"></script>
 <script src="{{url_for('static',filename='js/main.js')}}"></script>
 </body>
 </html>

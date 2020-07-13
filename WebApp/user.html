@@ -48,14 +48,12 @@
             <div class="card-body">
                 <h3 class="card-title text-center">Register to GroceryGo</h3>
                 {% block content %}
-                <!--                    <div class="container">-->
                 {% for message in get_flashed_messages() %}
                 <div class="alert alert-warning" style="text-align:center;">
                     {{ message }}
                 </div>
                 {% endfor %}
                 {% block page_content %}{% endblock %}
-                <!--                    </div>-->
                 {% endblock %}
                 <div class="card-text">
                     <form method="POST" action="{{ url_for('.createUser') }}">
@@ -65,7 +63,6 @@
                         </div>
                         <div class="form-group">
                             <label for="Gender">Gender</label>
-                            <!--                            <input type="text" class="form-control form-control-sm" id="Gender" name="Gender">-->
                             <select class="form-control form-control-sm" id="Gender" name="Gender">
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
