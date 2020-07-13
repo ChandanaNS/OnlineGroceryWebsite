@@ -22,7 +22,8 @@ sql_main_database = 'GroceryGo'
 sql_port = 3306
 
 
-# Creating Database Connection
+# Creating Database Connection 
+#pem key can be generated from AWS EC2
 def connection():
     if SSH_CONNECTION:
         ssh_server_connection = SSHTunnelForwarder(
@@ -43,6 +44,3 @@ def connection():
     )
 
     return database_server_connection
-
-
-print(connection())
