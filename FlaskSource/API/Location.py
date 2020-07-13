@@ -76,7 +76,6 @@ def getLocation():
         location_data = {'data': {'items': [{'title': 'Ballsbridge, Dublin, Ireland', 'id': 'here:cm:namedplace:23217387', 'resultType': 'locality', 'localityType': 'district', 'address': {'label': 'Ballsbridge, Dublin, Ireland', 'countryCode': 'IRL', 'countryName': 'Ireland', 'county': 'County Dublin', 'city': 'Dublin', 'district': 'Ballsbridge', 'postalCode': '4'}, 'position': {'lat': 53.33061, 'lng': -6.23343}, 'mapView': {'west': -6.25266, 'south': 53.31556, 'east': -6.20429, 'north': 53.3392}, 'scoring': {'queryScore': 1.0, 'fieldScore': {'district': 1.0}}}]}, 'api_key': 'oILvnb3yIsakFmQI-UJafpCXmRvN4INE2EZSwgt0R8s', 'latitude': 53.33061, 'longitude': -6.23343}
         return render_template('location.html', data=location_data)
     except Exception as e:
-        print('Exception:: Location::', e)
         flash('Something went wrong')
         return redirect("/location")
 
