@@ -61,6 +61,5 @@ def adminLogs():
         login_dictionary['productList'] = json.dumps(product_list)
         return render_template('admin.html', data=login_dictionary)
     except Exception as e:
-        print('Exception:: Admin API::', e)
         flash('Something went wrong')
         return redirect("/")
