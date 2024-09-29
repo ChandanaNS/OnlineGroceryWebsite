@@ -20,4 +20,4 @@ simple-geoip==0.1.0
 six==1.15.0
 sshtunnel==0.1.5
 urllib3==1.25.9
-Werkzeug==1.0.1
+Werkzeug==2.2.3
